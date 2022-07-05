@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departure: one
+  arrival: one
+  date: 2022-07-05 13:44:23
+
+two:
+  departure: two
+  arrival: two
+  date: 2022-07-05 13:44:23
