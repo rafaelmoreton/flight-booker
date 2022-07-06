@@ -1,0 +1,19 @@
+<h1>Flights#index</h1>
+
+<%= form_with(url: "/flights", method: "get") do %>
+
+    Departure <br>
+    <%= select_tag(:departure_id, options_for_select(@airport_options)) %> <br>
+
+    Arrival <br>
+    <%= select_tag(:arrival_id, options_for_select(@airport_options)) %> <br>
+
+    Date <br>
+    <%= select_tag(:date, options_for_select(@date_options)) %> <br>
+
+    <%= submit_tag("Search")%>
+<% end %>
+
+<% @flights.each do |flight| %>
+    <br><%= flight.id %>
+<% end %>
