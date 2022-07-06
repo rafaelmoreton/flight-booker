@@ -5,6 +5,7 @@ class FlightsController < ApplicationController
   def index
     @airport_options = Airport.all.map { |a| [a.code, a.id] }
     @date_options = Flight.all.map(&:date).uniq
+    @passengers = params[:passengers]
      
     @flights = Flight.where("
       departure_id = ? AND

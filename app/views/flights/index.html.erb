@@ -11,6 +11,9 @@
     Date <br>
     <%= select_tag(:date, options_for_select(@date_options)) %> <br>
 
+    Passengers <br>
+    <%= select_tag(:passengers, options_for_select([1, 2, 3, 4])) %> <br>
+
     <%= submit_tag("Search")%>
 <% end %> <br>
 
@@ -25,6 +28,8 @@
             DATE: <%= flight.date %>
         </div>
     <% end %>
+
+    <%= f.hidden_field :passengers, value: @passengers %>
 
     <%= submit_tag("Book")%>
 <% end %>
