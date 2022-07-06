@@ -12,8 +12,19 @@
     <%= select_tag(:date, options_for_select(@date_options)) %> <br>
 
     <%= submit_tag("Search")%>
-<% end %>
+<% end %> <br>
 
-<% @flights.each do |flight| %>
-    <br><%= flight.id %>
+<%= form_with(url: "/bookings/new", method: "get") do |f| %>
+    Results <br>
+    <% @flights.each do |flight| %>
+        <div>
+            <%= f.radio_button :flight_id, flight.id %>
+            flight id: <%= flight.id %> <br>
+            DEPARTURE: <%= flight.departure.code %> <br>
+            ARRIVAL: <%= flight.arrival.code %> <br>
+            DATE: <%= flight.date %>
+        </div>
+    <% end %>
+
+    <%= submit_tag("Book")%>
 <% end %>
