@@ -3,16 +3,16 @@
 <%= form_with(url: "/flights", method: "get") do %>
 
     Departure <br>
-    <%= select_tag(:departure_id, options_for_select(@airport_options)) %> <br>
+    <%= select_tag(:departure_id, options_for_select(@airport_options, params[:departure_id])) %> <br>
 
     Arrival <br>
-    <%= select_tag(:arrival_id, options_for_select(@airport_options)) %> <br>
+    <%= select_tag(:arrival_id, options_for_select(@airport_options, params[:arrival_id])) %> <br>
 
     Date <br>
-    <%= select_tag(:date, options_for_select(@date_options)) %> <br>
+    <%= select_tag(:date, options_for_select(@date_options, params[:date])) %> <br>
 
     Passengers <br>
-    <%= select_tag(:passengers, options_for_select([1, 2, 3, 4])) %> <br>
+    <%= select_tag(:passengers, options_for_select([1, 2, 3, 4], params[:passengers])) %> <br>
 
     <%= submit_tag("Search")%>
 <% end %> <br>
