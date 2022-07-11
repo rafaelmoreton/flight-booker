@@ -17,19 +17,22 @@
     <%= submit_tag("Search")%>
 <% end %> <br>
 
-<%= form_with(url: "/bookings/new", method: "get") do |f| %>
-    Results <br>
-    <% @flights.each do |flight| %>
-        <div>
-            <%= f.radio_button :flight_id, flight.id %>
-            flight id: <%= flight.id %> <br>
-            DEPARTURE: <%= flight.departure.code %> <br>
-            ARRIVAL: <%= flight.arrival.code %> <br>
-            DATE: <%= flight.date %>
-        </div>
+
+<% unless @flights.count.zero? %>
+    <%= form_with(url: "/bookings/new", method: "get") do |f| %>
+        Results <br>
+        <% @flights.each do |flight| %>
+            <div>
+                <%= f.radio_button :flight_id, flight.id, required: true %>
+                flight id: <%= flight.id %> <br>
+                DEPARTURE: <%= flight.departure.code %> <br>
+                ARRIVAL: <%= flight.arrival.code %> <br>
+                DATE: <%= flight.date %>
+            </div>
+        <% end %>
+
+        <%= f.hidden_field :passengers, value: @passengers %>
+
+        <%= submit_tag("Book") %>
     <% end %>
-
-    <%= f.hidden_field :passengers, value: @passengers %>
-
-    <%= submit_tag("Book")%>
 <% end %>
