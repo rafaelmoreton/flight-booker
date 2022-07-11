@@ -11,7 +11,7 @@
     PASSENGERS:
     <ul>
         <% @booking.passengers.each do |passenger| %>
-            <li><%= passenger.name %></li>
+            <li><%= passenger.name %> / <%= passenger.email %></li>
         <% end %>
     </ul>
 </div>
