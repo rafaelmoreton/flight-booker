@@ -15,26 +15,27 @@
     <%= select_tag(:passengers, options_for_select([1, 2, 3, 4], params[:passengers])) %> <br>
 
     <%= submit_tag("Search")%>
-<% end %> <br>
+<% end %>
 
 
 <% if @flights.count.zero? && params[:commit] == "Search" %>
     No flight was found from. Please, try other airport or date options.
 <% elsif @flights.count.nonzero? %>
     <%= form_with(url: "/bookings/new", method: "get") do |f| %>
-        Results <br>
+        <h2><%= "#{@flights.count} flight#{@flights.count == 1 ? " was" : "s were"} found:"%></h2>
         <% @flights.each do |flight| %>
-            <div>
+            <div style="display: flex">
                 <%= f.radio_button :flight_id, flight.id, required: true %>
-                flight id: <%= flight.id %> <br>
-                DEPARTURE: <%= flight.departure.code %> <br>
-                ARRIVAL: <%= flight.arrival.code %> <br>
-                DATE: <%= flight.date %>
+                <div>
+                    DEPARTURE: <%= flight.departure.code %> <br>
+                    ARRIVAL: <%= flight.arrival.code %> <br>
+                    DATE: <%= flight.date %>
+                </div>
             </div>
         <% end %>
 
         <%= f.hidden_field :passengers, value: @passengers %>
 
-        <%= submit_tag("Book") %>
+        <%= submit_tag("Next") %>
     <% end %>
 <% end %>

@@ -1,12 +1,12 @@
-<h1>New Booking</h1>
+<h1>Booking</h1>
 
 <div>
-    flight id: <%= @booking.flight.id %> <br>
     DEPARTURE: <%= @booking.flight.departure.code %> <br>
     ARRIVAL: <%= @booking.flight.arrival.code %> <br>
     DATE: <%= @booking.flight.date %>
 </div>
 
+<h2> Passenger informations </h2>
 <div>
     <%= form_with model: @booking do |form| %>
 
@@ -21,6 +21,6 @@
                 </div>
             <% end %>
 
-        <%= form.submit %>
+        <%= form.submit("Book") %>
     <% end %>
 </div>
