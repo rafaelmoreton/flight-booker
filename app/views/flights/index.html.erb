@@ -1,4 +1,4 @@
-<h1>Flights#index</h1>
+<h1>Flights</h1>
 
 <%= form_with(url: "/flights", method: "get") do %>
 
@@ -18,7 +18,9 @@
 <% end %> <br>
 
 
-<% unless @flights.count.zero? %>
+<% if @flights.count.zero? && params[:commit] == "Search" %>
+    No flight was found from. Please, try other airport or date options.
+<% elsif @flights.count.nonzero? %>
     <%= form_with(url: "/bookings/new", method: "get") do |f| %>
         Results <br>
         <% @flights.each do |flight| %>
