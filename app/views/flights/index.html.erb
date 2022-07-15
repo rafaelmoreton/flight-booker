@@ -23,16 +23,16 @@
 <% elsif @flights.count.nonzero? %>
     <%= form_with(url: "/bookings/new", method: "get") do |f| %>
         <h2><%= "#{@flights.count} flight#{@flights.count == 1 ? " was" : "s were"} found:"%></h2>
-        <% @flights.each do |flight| %>
-            <div style="display: flex">
-                <%= f.radio_button :flight_id, flight.id, required: true %>
-                <div>
-                    DEPARTURE: <%= flight.departure.code %> <br>
-                    ARRIVAL: <%= flight.arrival.code %> <br>
-                    DATE: <%= flight.date %>
-                </div>
+
+            <div>
+                <%= f.collection_radio_buttons :flight_id, @flights.order(:code), :id, :full_info, required: true  do |button| %>
+                    <div style="display: flex; margin-bottom: 15px">
+                        <%= button.radio_button style: "width: 40px" %>
+                        <%= button.label(style: "white-space: pre-wrap; padding-left: 10px") { button.text } %>
+                    </div>
+                <% end %>
             </div>
-        <% end %>
+
 
         <%= f.hidden_field :passengers, value: @passengers %>
 
