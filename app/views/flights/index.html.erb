@@ -25,9 +25,9 @@
         <h2><%= "#{@flights.count} flight#{@flights.count == 1 ? " was" : "s were"} found:"%></h2>
 
             <div>
-                <%= f.collection_radio_buttons :flight_id, @flights.order(:code), :id, :full_info, required: true  do |button| %>
+                <%= f.collection_radio_buttons :flight_id, @flights.order(:code), :id, :full_info do |button| %>
                     <div style="display: flex; margin-bottom: 15px">
-                        <%= button.radio_button style: "width: 40px" %>
+                        <%= button.radio_button style: "width: 40px", required: true %>
                         <%= button.label(style: "white-space: pre-wrap; padding-left: 10px") { button.text } %>
                     </div>
                 <% end %>
