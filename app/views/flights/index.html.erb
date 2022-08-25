@@ -22,10 +22,10 @@
     No flight was found from. Please, try other airport or date options.
 <% elsif @flights.count.nonzero? %>
     <%= form_with(url: "/bookings/new", method: "get") do |f| %>
-        <h2><%= "#{@flights.count} flight#{@flights.count == 1 ? " was" : "s were"} found:"%></h2>
+        <h2><%= "#{@flights.count} flight#{@flights.count == 1 ? " was" : "s were"} found from #{@airport_options.select{|a| a.last.to_s == params[:departure_id].to_s}[0][0]} to #{@airport_options.select{|a| a.last.to_s == params[:arrival_id].to_s}[0][0]} on #{params[:date]}"%></h2>
 
             <div>
-                <%= f.collection_radio_buttons :flight_id, @flights.order(:code), :id, :full_info do |button| %>
+                <%= f.collection_radio_buttons :flight_id, @flights.order(:departure_time), :id, :full_info do |button| %>
                     <div style="display: flex; margin-bottom: 15px">
                         <%= button.radio_button style: "width: 40px", required: true %>
                         <%= button.label(style: "white-space: pre-wrap; padding-left: 10px") { button.text } %>

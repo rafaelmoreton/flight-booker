@@ -17,17 +17,21 @@ airports = [
   Airport.create(code: "HKG")
 ]
 
-# Create a flight for day for a year, from each airport to each other airport
+# Create a random number between 1 and 5 of flights for each day for a month,
+# from each airport to each other airport, each with a random departure time
 Flight::delete_all
 dates = Array(Date.today..Date.today.next_month)
 dates.each do |date|
   airports.each do |departure_airport|
     airports.reject { |a| a == departure_airport }.each do |arrival_airport|
-      Flight.create(
-        departure: departure_airport,
-        arrival: arrival_airport,
-        date: date
-      )
+      rand(1..5).times do
+        Flight.create(
+          departure: departure_airport,
+          arrival: arrival_airport,
+          date: date,
+          departure_time: "#{rand(1..12)}:#{rand(0..5)}#{[0, 5].sample} #{["AM", "PM"].sample}"
+        )
+      end
     end
   end  
 end

@@ -7,9 +7,7 @@ class Flight < ApplicationRecord
 
   def full_info
     <<~FLIGHT_INFO
-    DEPARTURE: #{departure.code}
-    ARRIVAL: #{arrival.code}
-    DATE: #{date}
+    TIME: #{departure_time}
     FLIGHT_INFO
   end
 end
