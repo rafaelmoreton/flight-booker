@@ -20,18 +20,18 @@ airports = [
 # Create a random number between 1 and 5 of flights for each day for a month,
 # from each airport to each other airport, each with a random departure time
 Flight::delete_all
-dates = Array(Date.today..Date.today.next_month)
-dates.each do |date|
+datetimes = Array(DateTime.now..DateTime.now.next_month)
+datetimes.each do |datetime|
   airports.each do |departure_airport|
     airports.reject { |a| a == departure_airport }.each do |arrival_airport|
       rand(1..5).times do
         Flight.create(
           departure: departure_airport,
           arrival: arrival_airport,
-          date: date,
-          departure_time: "#{rand(1..12)}:#{rand(0..5)}#{[0, 5].sample} #{["AM", "PM"].sample}"
+          datetime: datetime,
+          date: datetime.to_date.to_s
         )
       end
     end
-  end  
+  end
 end
