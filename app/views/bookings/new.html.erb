@@ -1,9 +1,10 @@
 <h1>Booking</h1>
 
 <div>
-    DEPARTURE: <%= @booking.flight.departure.code %> <br>
-    ARRIVAL: <%= @booking.flight.arrival.code %> <br>
-    DATE: <%= @booking.flight.date %>
+    Departure: <%= @booking.flight.departure.code %> <br>
+    Arrival: <%= @booking.flight.arrival.code %> <br>
+    Date: <%= @booking.flight.date %>
+    <br> <%= @booking.flight.time_info %>
 </div>
 
 <h2> Passenger informations </h2>
