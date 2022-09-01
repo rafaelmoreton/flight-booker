@@ -1,20 +1,31 @@
-<h1>Flights</h1>
+<h1 class="flights-index">Flight Booker</h1>
 
-<%= form_with(url: "/flights", method: "get") do %>
+<%= form_with(url: "/flights", method: "get", class: "flights-index flight-search-form") do %>
 
-    Departure <br>
-    <%= select_tag(:departure_id, options_for_select(@airport_options, params[:departure_id])) %> <br>
+    <div class= "flights-index form-fields">
+        <div>
+            <%= label_tag(:departure_id, "Departure") %>
+            <br>
+            <%= select_tag(:departure_id, options_for_select(@airport_options, params[:departure_id])) %>
+        </div>
+        <div>
+            <%= label_tag(:arrival_id, "Arrival") %>
+            <br>
+            <%= select_tag(:arrival_id, options_for_select(@airport_options, params[:arrival_id])) %>
+        </div>
+        <div>
+            <%= label_tag(:datetime, "Date") %>
+            <br>
+            <%= select_tag(:datetime, options_for_select(@datetime_options, params[:datetime])) %>
+        </div>
+        <div>
+            <%= label_tag(:passengers, "Passengers") %>
+            <br>
+            <%= select_tag(:passengers, options_for_select([1, 2, 3, 4], params[:passengers])) %>
+        </div>
+    </div>
 
-    Arrival <br>
-    <%= select_tag(:arrival_id, options_for_select(@airport_options, params[:arrival_id])) %> <br>
-
-    Date <br>
-    <%= select_tag(:datetime, options_for_select(@datetime_options, params[:datetime])) %> <br>
-
-    Passengers <br>
-    <%= select_tag(:passengers, options_for_select([1, 2, 3, 4], params[:passengers])) %> <br>
-
-    <%= submit_tag("Search")%>
+    <%= submit_tag("Search", class: "flights-index search-button")%>
 <% end %>
 
 

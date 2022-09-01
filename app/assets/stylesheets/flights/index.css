@@ -1,0 +1,21 @@
+h1.flights-index {
+    text-align: center;
+}
+
+.flights-index.flight-search-form {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flights-index.flight-search-form .form-fields {
+    display: flex;
+    gap: 50px;
+    text-align: center;
+}
+
+.flights-index.search-button {
+    width: 200px;
+    height: 50px;
+}
