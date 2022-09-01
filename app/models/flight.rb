@@ -5,9 +5,9 @@ class Flight < ApplicationRecord
   has_many :bookings
   has_many :passengers, through: :bookings
 
-  def full_info
+  def time_info
     <<~FLIGHT_INFO
-    TIME: #{datetime}
+    Time: #{0 if datetime.hour < 10}#{datetime.hour}:#{0 if datetime.min < 10}#{datetime.min}
     FLIGHT_INFO
   end
 end
