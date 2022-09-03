@@ -32,17 +32,25 @@
 <% if @flights.count.zero? && params[:commit] == "Search" %>
     No flight was found from. Please, try other airport or date options.
 <% elsif @flights.count.nonzero? %>
-    <%= form_with(url: "/bookings/new", method: "get") do |f| %>
+    <%= form_with(url: "/bookings/new", method: "get", class: "flights-index flight-selection-form") do |f| %>
         <h2>Available flights:</h2>
-            <div>
+            <div class="flights-index flight-selection-list">
                 <%= f.collection_radio_buttons :flight_id, @flights.order(:datetime), :id, :flight_info do |button| %>
-                    <div style="display: flex; margin-bottom: 15px">
-                        <%= button.radio_button style: "width: 40px", required: true %>
-                        <%= button.label(style: "white-space: pre-wrap; padding-left: 10px") { button.text } %>
-                    </div>
+
+                    <label for=<%= "flight_id_#{button.object.id}" %>>
+                        <%= button.radio_button required: true %>
+                        <div class="flights-index flight-selection-input-info">
+                            <div class="flights-index flight-selection-airport-info">
+                                <p><%= "From: #{button.object.departure.code}" %></p>
+                                <p><%= "To: #{button.object.arrival.code}" %></p>
+                            </div>
+                            <div><%= "Date: #{button.object.date}" %></div>
+                            <div><%= "Departure: #{button.object.time_info}" %></div>
+                        </div>
+                    </label>
+
                 <% end %>
             </div>
-
 
         <%= f.hidden_field :passengers, value: @passengers %>
 

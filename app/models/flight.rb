@@ -20,11 +20,11 @@ class Flight < ApplicationRecord
   end
 
   def flight_info
-    <<~FLIGHT_INFO
-      From: #{departure.code}
-      To: #{arrival.code}
-      Date: #{date}
-      Time of departure: #{time_info}
-    FLIGHT_INFO
+    {
+      from: departure.code,
+      to: arrival.code,
+      date: date,
+      time: time_info
+    }
   end
 end
