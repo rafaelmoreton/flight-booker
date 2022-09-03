@@ -16,8 +16,15 @@ class Flight < ApplicationRecord
     if twelve_hour_time.hour == 0
       twelve_hour_time = twelve_hour_time.change(hour: 12, min: datetime.min, offset: 0)
     end
+    "#{0 if twelve_hour_time.hour < 10}#{twelve_hour_time.hour}:#{0 if datetime.min < 10}#{twelve_hour_time.min} #{period}"
+  end
+
+  def flight_info
     <<~FLIGHT_INFO
-    #{0 if twelve_hour_time.hour < 10}#{twelve_hour_time.hour}:#{0 if datetime.min < 10}#{twelve_hour_time.min} #{period}
+      From: #{departure.code}
+      To: #{arrival.code}
+      Date: #{date}
+      Time of departure: #{time_info}
     FLIGHT_INFO
   end
 end
