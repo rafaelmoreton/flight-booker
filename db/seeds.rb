@@ -31,7 +31,7 @@ month_dates.each do |date|
       rand(1..5).times do
         random_time = date.change(
           hour: rand(0..23),
-          min: Array(0..11).map {|n| n*5}.sample,
+          min: Array(1..19).map {|n| n*3}.sample,
           offset: 0
         )
         Flight.create(

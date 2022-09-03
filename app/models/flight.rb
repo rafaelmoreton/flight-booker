@@ -6,8 +6,18 @@ class Flight < ApplicationRecord
   has_many :passengers, through: :bookings
 
   def time_info
+    period = "AM"
+    if datetime.hour >= 12
+      twelve_hour_time = datetime.change(hour: datetime.hour - 12, min: datetime.min, offset: 0)
+      period = "PM"
+    else
+      twelve_hour_time = datetime
+    end
+    if twelve_hour_time.hour == 0
+      twelve_hour_time = twelve_hour_time.change(hour: 12, min: datetime.min, offset: 0)
+    end
     <<~FLIGHT_INFO
-    Time: #{0 if datetime.hour < 10}#{datetime.hour}:#{0 if datetime.min < 10}#{datetime.min}
+    #{0 if twelve_hour_time.hour < 10}#{twelve_hour_time.hour}:#{0 if datetime.min < 10}#{twelve_hour_time.min} #{period}
     FLIGHT_INFO
   end
 end
