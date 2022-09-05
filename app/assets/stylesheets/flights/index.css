@@ -75,7 +75,7 @@ h1.flights-index {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     width: 50%;
     margin: auto;
     margin-bottom: 20px;
@@ -90,10 +90,12 @@ h1.flights-index {
     padding: 15px;
     background-color: white;
     box-shadow: 3px 3px 5px #5c7a99;
+    border: 2px outset transparent;
+    color: #242424;
 }
 
 .flights-index.flight-selection-list label:hover {
-    background-color: #398ee7;
+    border: 2px outset #398ee7;
 }
 
 .flights-index.flight-selection-list label input {
