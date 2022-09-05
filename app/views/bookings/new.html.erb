@@ -1,10 +1,14 @@
-<h1>Booking</h1>
-
-<div>
-    Departure: <%= @booking.flight.departure.code %> <br>
-    Arrival: <%= @booking.flight.arrival.code %> <br>
-    Date: <%= @booking.flight.date %>
-    <br> <%= @booking.flight.time_info %>
+<div class="bookings-new summary">
+    <h2>Booking Details</h2>
+    <div>
+        <p>Departure: <%= @booking.flight.departure.code %></p>
+        <p>Arrival: <%= @booking.flight.arrival.code %></p>
+    </div>
+    <div>
+        <p>Date: <%= @booking.flight.date %></p>
+        <p>Time: <%= @booking.flight.time_info %></p>
+    </div>
+    <p>Passengers: <%= params[:passengers] %></p>
 </div>
 
 <h2> Passenger informations </h2>
