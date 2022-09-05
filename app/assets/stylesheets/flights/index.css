@@ -34,23 +34,25 @@ h1.flights-index {
 .flights-index.submit-button {
     width: 200px;
     height: 50px;
-    background-color: #23476c;
+    background-color: #2b547c;
     border-radius: 10px;
-    border: 0;
+    border:  2px outset #23476c;
     color: white;
     box-shadow: 2px 2px 3px #5c7a99;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .flights-index.submit-button:hover {
-    background-color: white;
-    border: 4px outset #7197bd;
+    background-color: #d4d4d4;
+    /* border: 2px outset #7197bd; */
     color: black;
     cursor: pointer;
 }
 
 .flights-index.submit-button:active {
-    border: 4px inset #7197bd;
-    background-color: #cbcbcb;
+    border: 2px inset #7197bd;
+    background-color: #b0b0b0;
 }
 
 .flights-index.flight-selection-form, .flights-index.flight-not-found {
@@ -76,7 +78,7 @@ h1.flights-index {
     gap: 20px;
     width: 50%;
     margin: auto;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .flights-index.flight-selection-list label{
