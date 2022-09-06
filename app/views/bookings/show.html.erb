@@ -1,17 +1,20 @@
-<h1>Booking overview</h1>
-
-<div>
-    Departure: <%= @booking.flight.departure.code %> <br>
-    Arrival: <%= @booking.flight.arrival.code %> <br>
-    Date: <%= @booking.flight.date %>
-    <br> <%= @booking.flight.time_info %>
+<div class="bookings-show summary">
+    <h2>Booking Summary</h2>
+    <div>
+        <p>Departure: <%= @booking.flight.departure.code %></p>
+        <p>Arrival: <%= @booking.flight.arrival.code %></p>
+    </div>
+    <div>
+        <p>Date: <%= @booking.flight.date %></p>
+        <p>Time: <%= @booking.flight.time_info %></p>
+    </div>
+    <div>
+        <p>Passengers:</p>
+        <ul class="bookings-show passengers-list">
+            <% @booking.passengers.each do |passenger| %>
+                <li><%= passenger.name %> | <%= passenger.email %></li>
+            <% end %>
+        </ul>
+    </div>
 </div>
 
-<div>
-    Passengers:
-    <ul>
-        <% @booking.passengers.each do |passenger| %>
-            <li><%= passenger.name %> / <%= passenger.email %></li>
-        <% end %>
-    </ul>
-</div>

@@ -1,0 +1,35 @@
+.bookings-show.summary {
+    width: 500px;
+    margin: 20px auto;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 3px 3px 5px #5c7a99;
+}
+
+.bookings-show.summary > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookings-show.summary > div:last-of-type {
+    display: block;
+}
+
+.bookings-show.summary > div:last-of-type > p {
+    margin-top: 25px;
+}
+
+.bookings-show.summary p {
+    margin: 10px 0 0;
+}
+
+.bookings-show h2 {
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.bookings-show.passengers-list {
+    padding-left: 15px;
+    margin: 5px 0 0;
+}
