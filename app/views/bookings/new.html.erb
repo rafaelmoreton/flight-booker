@@ -11,21 +11,19 @@
     <p>Passengers: <%= params[:passengers] %></p>
 </div>
 
-<h2> Passenger informations </h2>
-<div>
+<div class="bookings-new passenger-details">
+    <h2> Passenger Details </h2>
     <%= form_with model: @booking do |form| %>
-
+    <% passenger_number = 0 %>
             <%= form.fields_for :passengers do |passenger_form| %>
-                <div>
-                    <%= passenger_form.label :name %>
-                    <%= passenger_form.text_field :name, required: true %>
-                </div>
-                <div>
-                    <%= passenger_form.label :email %>
-                    <%= passenger_form.email_field :email, required: true %>
+                <div class="bookings-new passenger">
+                    <% passenger_number += 1 %>
+                    <p>Passenger <%= passenger_number %></p>
+                    <%= passenger_form.text_field :name, required: true, placeholder: "Name" %>
+                    <%= passenger_form.email_field :email, required: true, placeholder: "Email" %>
                 </div>
             <% end %>
 
-        <%= form.submit("Book") %>
+        <%= form.submit("Book Flight", class: "submit-button") %>
     <% end %>
 </div>

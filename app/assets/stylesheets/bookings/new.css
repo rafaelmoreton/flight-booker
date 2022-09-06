@@ -20,3 +20,25 @@
     text-align: center;
     margin: 0 0 10px;
 }
+
+.bookings-new form {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bookings-new.passenger {
+    border-radius: 15px;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 3px 3px 5px #5c7a99;
+}
+
+.bookings-new.passenger p {
+    margin: 0 0 5px;
+}
+
+.bookings-new.passenger input {
+    height: 30px;
+}
